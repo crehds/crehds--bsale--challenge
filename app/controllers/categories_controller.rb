@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: :show
+  before_action :set_category, only: %i[show products_by_category]
 
   # GET /categories
   def index
@@ -11,6 +11,12 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   def show
     render json: @category
+  end
+
+  def products_by_category
+    title = @category.name.upcase
+    @products = Product.where("name LIKE ?", "#{title}%")
+    render json: @products
   end
 
   private
