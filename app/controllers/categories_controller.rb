@@ -14,7 +14,8 @@ class CategoriesController < ApplicationController
   end
 
   def products_by_category
-    title = @category.name.upcase
+    # * Logic accordding to category names
+    title = @category.name.split.last
     @products = Product.where("name LIKE ?", "#{title}%")
     render json: @products
   end
