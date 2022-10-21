@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+  username: bsale_test
+  password: bsale_test
+  host: mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com
 
 development:
   <<: *default
-  database: crehds__bsale__challenge_development
+  database: bsale_test
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
