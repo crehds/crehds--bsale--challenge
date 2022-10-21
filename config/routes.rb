@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   #   get "products_by_category", on: :member
   # end
 
-  resources :categories
+  resources :categories, only: %i[index]
+  resources :products, only: %i[index show]
   get "/categories/:id/products", to: "categories#products_by_category"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
