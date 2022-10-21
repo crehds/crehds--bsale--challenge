@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: crehds__bsale__challenge_production
-  username: crehds__bsale__challenge
-  password: <%= ENV["CREHDS__BSALE__CHALLENGE_DATABASE_PASSWORD"] %>
+  database: bsale_test
