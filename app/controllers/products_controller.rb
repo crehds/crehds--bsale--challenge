@@ -13,6 +13,13 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
+  def search_by_name
+    name = params[:names]
+    @products = Product.where("name Like ?",
+                              "#{name}%").or(Product.where("name Like ?", "%#{name}%"))
+    render json: @products
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
