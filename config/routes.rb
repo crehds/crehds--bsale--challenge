@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # end
 
   resources :categories, only: %i[index]
+  get "products/search--by--names", to: "products#search_by_name"
   resources :products, only: %i[index show]
   get "/categories/:id/products", to: "categories#products_by_category"
 
