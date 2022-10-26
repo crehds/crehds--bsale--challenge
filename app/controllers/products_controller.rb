@@ -14,9 +14,29 @@ class ProductsController < ApplicationController
   end
 
   def search_by_name
-    name = params[:names]
-    @products = Product.where("name Like ?",
-                              "#{name}%").or(Product.where("name Like ?", "%#{name}%"))
+    name1 = params[:name1]
+    unless params[:name1].nil?
+      @products = Product.where("name Like ?",
+                                "#{name1}%").or(Product.where("name Like ?",
+                                                              "%#{name1}%"))
+    end
+
+    name2 = params[:name2]
+    unless params[:name2].nil?
+      @products2 = Product.where("name Like ?",
+                                 "#{name2}%").or(Product.where("name Like ?",
+                                                               "%#{name2}%"))
+      @products = [*@products, *@products2]
+    end
+
+    name3 = params[:name3]
+    unless params[:name3].nil?
+      @products3 = Product.where("name Like ?",
+                                 "#{name3}%").or(Product.where("name Like ?",
+                                                               "%#{name3}%"))
+      @products = [*@products, *@products3]
+    end
+
     render json: @products
   end
 
